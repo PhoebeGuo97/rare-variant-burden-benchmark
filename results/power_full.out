@@ -1,0 +1,168 @@
+open file limit: 256 -> 
+10240
+
+=============== simulate ===============
+samples 2504, genotype columns 2638
+  ABCE1      5 causal variants at MAF < 0.01
+  ERO1A      23 causal variants at MAF < 0.01
+  DLGAP1     40 causal variants at MAF < 0.01
+  FBN1       116 causal variants at MAF < 0.01
+wrote config/pheno_power_full.tsv  (1200 traits)
+wrote results/power_design_full.tsv
+
+Every trait has ONE causal gene; the other 55 genes are null in the
+same run, so each replicate also contributes null observations.
+
+[20:32:24] f_mac10 : 1200 traits, MACthr 10, chunks of 100
+  [20:46:36] f_mac10_c1 exit 0 852s 100/100 files
+  [21:00:22] f_mac10_c2 exit 0 826s 100/100 files
+  [21:14:39] f_mac10_c3 exit 0 857s 100/100 files
+  [21:29:15] f_mac10_c4 exit 0 876s 100/100 files
+  [21:42:57] f_mac10_c5 exit 0 822s 100/100 files
+  [21:56:55] f_mac10_c6 exit 0 838s 100/100 files
+  [22:09:26] f_mac10_c7 exit 0 751s 100/100 files
+  [22:23:26] f_mac10_c8 exit 0 840s 100/100 files
+  [22:38:09] f_mac10_c9 exit 0 883s 100/100 files
+  [22:52:03] f_mac10_c10 exit 0 834s 100/100 files
+  [23:06:03] f_mac10_c11 exit 0 840s 100/100 files
+  [09:10:14] f_mac10_c12 exit 0 36251s 100/100 files
+
+[09:10:14] f_mac1 : 1200 traits, MACthr 1, chunks of 100
+  [09:19:35] f_mac1_c1 exit 0 561s 100/100 files
+  [09:31:05] f_mac1_c2 exit 0 690s 100/100 files
+  [09:37:23] f_mac1_c3 exit 0 378s 100/100 files
+  [09:43:36] f_mac1_c4 exit 0 373s 100/100 files
+  [09:50:02] f_mac1_c5 exit 0 386s 100/100 files
+  [09:56:17] f_mac1_c6 exit 0 375s 100/100 files
+  [10:02:40] f_mac1_c7 exit 0 383s 100/100 files
+  [10:09:04] f_mac1_c8 exit 0 384s 100/100 files
+  [10:14:01] f_mac1_c9 exit 0 297s 100/100 files
+  [10:20:46] f_mac1_c10 exit 0 405s 100/100 files
+  [10:27:24] f_mac1_c11 exit 0 398s 100/100 files
+  [10:34:04] f_mac1_c12 exit 0 400s 100/100 files
+
+=============== analyze ===============
+design traits 1200, result files 1200
+wrote results/power_full_mac10.tsv
+
+========================================================================================
+POWER at alpha 0.05, M2_lof_mis / 0.01, by effect size and direction
+========================================================================================
+gene         nvar       h2     same-dir    mixed-dir      ratio
+----------------------------------------------------------------------------------------
+ABCE1           5  0.00125        0.500        0.000        inf
+ABCE1           5   0.0025        0.800        0.040      20.00
+ABCE1           5    0.005        0.920        0.120       7.67
+DLGAP1         40  0.00125        0.340        0.020      17.00
+DLGAP1         40   0.0025        0.720        0.120       6.00
+DLGAP1         40    0.005        0.940        0.360       2.61
+ERO1A          23  0.00125        0.420        0.100       4.20
+ERO1A          23   0.0025        0.740        0.060      12.33
+ERO1A          23    0.005        0.940        0.300       3.13
+FBN1          116  0.00125        0.460        0.080       5.75
+FBN1          116   0.0025        0.600        0.100       6.00
+FBN1          116    0.005        0.860        0.140       6.14
+
+========================================================================================
+THE CONTRAST: burden vs SKAT-O under mixed-direction effects
+burden sums, so opposing signs cancel; SKAT tests variance and ignores sign
+========================================================================================
+gene             h2 dir      burden(ADD)         SKAT        SKATO
+----------------------------------------------------------------------------------------
+ABCE1       0.00125 same           0.500        0.500        0.500
+ABCE1       0.00125 mixed          0.000        0.000        0.000
+ABCE1        0.0025 same           0.800        0.800        0.800
+ABCE1        0.0025 mixed          0.040        0.040        0.040
+ABCE1         0.005 same           0.920        0.920        0.920
+ABCE1         0.005 mixed          0.120        0.120        0.120
+DLGAP1      0.00125 same           0.340        0.220          nan
+DLGAP1      0.00125 mixed          0.020        0.060          nan
+DLGAP1       0.0025 same           0.720        0.580          nan
+DLGAP1       0.0025 mixed          0.120        0.140          nan
+DLGAP1        0.005 same           0.940        0.940          nan
+DLGAP1        0.005 mixed          0.360        0.460          nan
+ERO1A       0.00125 same           0.420        0.380          nan
+ERO1A       0.00125 mixed          0.100        0.160          nan
+ERO1A        0.0025 same           0.740        0.640          nan
+ERO1A        0.0025 mixed          0.060        0.140          nan
+ERO1A         0.005 same           0.940        0.940          nan
+ERO1A         0.005 mixed          0.300        0.280          nan
+FBN1        0.00125 same           0.460        0.360        0.360
+FBN1        0.00125 mixed          0.080        0.040        0.080
+FBN1         0.0025 same           0.600        0.480        0.540
+FBN1         0.0025 mixed          0.100        0.180        0.180
+FBN1          0.005 same           0.860        0.840        0.840
+FBN1          0.005 mixed          0.140        0.200        0.220
+
+========================================================================================
+NULL CHECK: the 55 non-causal genes in the same runs, alpha 0.05
+========================================================================================
+  same   n=  33000  false positive rate 0.0516  (nominal 0.05)
+  mixed  n=  33000  false positive rate 0.0490  (nominal 0.05)
+
+If power is 0.00 or 1.00 everywhere, the h2 grid is in the wrong place
+and burden vs SKAT cannot separate. Pick an h2 with power near 0.3-0.7
+and run the full grid there.
+design traits 1200, result files 1200
+wrote results/power_full_mac1.tsv
+
+========================================================================================
+POWER at alpha 0.05, M2_lof_mis / 0.01, by effect size and direction
+========================================================================================
+gene         nvar       h2     same-dir    mixed-dir      ratio
+----------------------------------------------------------------------------------------
+ABCE1           5  0.00125        0.500        0.000        inf
+ABCE1           5   0.0025        0.800        0.040      20.00
+ABCE1           5    0.005        0.920        0.120       7.67
+DLGAP1         40  0.00125        0.340        0.020      17.00
+DLGAP1         40   0.0025        0.720        0.120       6.00
+DLGAP1         40    0.005        0.940        0.360       2.61
+ERO1A          23  0.00125        0.420        0.100       4.20
+ERO1A          23   0.0025        0.740        0.060      12.33
+ERO1A          23    0.005        0.940        0.300       3.13
+FBN1          116  0.00125        0.460        0.080       5.75
+FBN1          116   0.0025        0.600        0.100       6.00
+FBN1          116    0.005        0.860        0.140       6.14
+
+========================================================================================
+THE CONTRAST: burden vs SKAT-O under mixed-direction effects
+burden sums, so opposing signs cancel; SKAT tests variance and ignores sign
+========================================================================================
+gene             h2 dir      burden(ADD)         SKAT        SKATO
+----------------------------------------------------------------------------------------
+ABCE1       0.00125 same           0.500        0.500        0.500
+ABCE1       0.00125 mixed          0.000        0.000        0.000
+ABCE1        0.0025 same           0.800        0.800        0.800
+ABCE1        0.0025 mixed          0.040        0.040        0.040
+ABCE1         0.005 same           0.920        0.920        0.920
+ABCE1         0.005 mixed          0.120        0.120        0.120
+DLGAP1      0.00125 same           0.340        0.080          nan
+DLGAP1      0.00125 mixed          0.020        0.140          nan
+DLGAP1       0.0025 same           0.720        0.460          nan
+DLGAP1       0.0025 mixed          0.120        0.260          nan
+DLGAP1        0.005 same           0.940        0.800          nan
+DLGAP1        0.005 mixed          0.360        0.600          nan
+ERO1A       0.00125 same           0.420        0.040        0.040
+ERO1A       0.00125 mixed          0.100        0.020        0.040
+ERO1A        0.0025 same           0.740        0.080        0.080
+ERO1A        0.0025 mixed          0.060        0.020        0.020
+ERO1A         0.005 same           0.940        0.060        0.060
+ERO1A         0.005 mixed          0.300        0.100        0.080
+FBN1        0.00125 same           0.460        0.220        0.420
+FBN1        0.00125 mixed          0.080        0.120        0.100
+FBN1         0.0025 same           0.600        0.380        0.560
+FBN1         0.0025 mixed          0.100        0.180        0.140
+FBN1          0.005 same           0.860        0.560        0.880
+FBN1          0.005 mixed          0.140        0.200        0.140
+
+========================================================================================
+NULL CHECK: the 55 non-causal genes in the same runs, alpha 0.05
+========================================================================================
+  same   n=  33000  false positive rate 0.0516  (nominal 0.05)
+  mixed  n=  33000  false positive rate 0.0490  (nominal 0.05)
+
+If power is 0.00 or 1.00 everywhere, the h2 grid is in the wrong place
+and burden vs SKAT cannot separate. Pick an h2 with power near 0.3-0.7
+and run the full grid there.
+
+DONE.

@@ -1,0 +1,15 @@
+# Additional 17q21.31 candidate genes from the dissertation, not on the
+# shared-modifier list. Recorded in the coords table as list=candidate_17q21 so
+# the distinction from the 51 shared modifiers is preserved, but they are panel
+# genes and are analyzed exactly like the rest.
+#
+# They are NOT controls. Under a simulated null phenotype every gene in the
+# panel is null, so nothing here is doing control duty. Artifact-prone regions
+# are identified by the measured mappability and callset QC columns instead.
+#
+# Drop this file from the run with:  --extra /dev/null
+KANSL1
+LRRC37A
+LRRC37A2
+SPPL2C
+STH

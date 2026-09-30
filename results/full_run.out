@@ -1,0 +1,120 @@
+=============== phenotypes ===============
+samples: 2504
+superpopulations: AFR, AMR, EAS, EUR, SAS
+wrote config/pheno_qt_null_qt.tsv  (500 traits)
+wrote config/pheno_bt10_null_qt.tsv  (500 traits, 250 cases / 2254 controls)
+wrote config/pheno_bt01_null_qt.tsv  (500 traits, 25 cases / 2479 controls)
+wrote config/pheno_qt_struct_qt.tsv  (1500 traits: 3 strengths x 500 reps)
+
+Arm B check, variance explained by superpopulation (first rep each):
+  strength 0.25  R2 = 0.045
+  strength 0.50  R2 = 0.037
+  strength 1.00  R2 = 0.409
+
+Without PC covariates these should inflate. With them, the question is
+whether the inflation clears, and whether it clears equally in every
+AAF bin. Expect the rarest bin to clear least.
+samples: 2504
+superpopulations: AFR, AMR, EAS, EUR, SAS
+wrote config/pheno_qt_null_bt.tsv  (200 traits)
+wrote config/pheno_bt10_null_bt.tsv  (200 traits, 250 cases / 2254 controls)
+wrote config/pheno_bt01_null_bt.tsv  (200 traits, 25 cases / 2479 controls)
+wrote config/pheno_qt_struct_bt.tsv  (600 traits: 3 strengths x 200 reps)
+
+Arm B check, variance explained by superpopulation (first rep each):
+  strength 0.25  R2 = 0.009
+  strength 0.50  R2 = 0.386
+  strength 1.00  R2 = 0.380
+
+Without PC covariates these should inflate. With them, the question is
+whether the inflation clears, and whether it clears equally in every
+AAF bin. Expect the rarest bin to clear least.
+samples: 2504
+superpopulations: AFR, AMR, EAS, EUR, SAS
+wrote config/pheno_qt_null_st.tsv  (100 traits)
+wrote config/pheno_bt10_null_st.tsv  (100 traits, 250 cases / 2254 controls)
+wrote config/pheno_bt01_null_st.tsv  (100 traits, 25 cases / 2479 controls)
+wrote config/pheno_qt_struct_st.tsv  (300 traits: 3 strengths x 100 reps)
+
+Arm B check, variance explained by superpopulation (first rep each):
+  strength 0.25  R2 = 0.016
+  strength 0.50  R2 = 0.035
+  strength 1.00  R2 = 0.647
+
+Without PC covariates these should inflate. With them, the question is
+whether the inflation clears, and whether it clears equally in every
+AAF bin. Expect the rarest bin to clear least.
+
+=============== ARM A: unstructured null ===============
+[10:49:00] a1_qt  starting
+[10:49:05] a1_qt  exit 1, 5s
+   +number of annotations categories = 4
+ * masks            : [config/regenie_masks.def] n_masks = 3
+ * aaf cutoffs      : [ 4 : 0.001 0.005 0.01 1 ] + singletons
+ * set file         : [config/regenie_setlist.tsv] n_sets = 56
+ * # threads        : [7]
+ * # tested sets    : [56]
+ * max block size   : [200]
+ * rule used to build masks : max
+ * computing gene-based tests for each set of variants included in a mask (rho=[0,0.01,0.04,0.09,0.16,0.25,0.5,1])
+  -variants with MAC <= 10 are collapsed into a mask
+  -weights are obtained from Beta(MAF,1,25)
+  -list of gene-based tests run: ACATO,ACATV,SKAT,SKATO,SKATO-ACAT
+ * approximate memory usage : 74MB
+ * using minimum MAC of 1 (masks with lower MAC are ignored)
+ERROR: cannot write file : results/regenie/a1_qt_QT246.regenie.gz
+[10:49:05] a2_bt10_nofirth  starting
+[10:59:41] a2_bt10_nofirth  exit 0, 636s
+[10:59:41] a3_bt01_nofirth  starting
+[11:09:30] a3_bt01_nofirth  exit 0, 589s
+[11:09:30] a4_bt10_firth  starting
+[11:20:37] a4_bt10_firth  exit 0, 667s
+[11:20:37] a5_bt01_firth  starting
+[11:32:38] a5_bt01_firth  exit 0, 721s
+
+=============== ARM B: structure confounded null ===============
+[11:32:38] b1_struct_nopc  starting
+[11:32:44] b1_struct_nopc  exit 1, 6s
+   +number of annotations categories = 4
+ * masks            : [config/regenie_masks.def] n_masks = 3
+ * aaf cutoffs      : [ 4 : 0.001 0.005 0.01 1 ] + singletons
+ * set file         : [config/regenie_setlist.tsv] n_sets = 56
+ * # threads        : [7]
+ * # tested sets    : [56]
+ * max block size   : [200]
+ * rule used to build masks : max
+ * computing gene-based tests for each set of variants included in a mask (rho=[0,0.01,0.04,0.09,0.16,0.25,0.5,1])
+  -variants with MAC <= 10 are collapsed into a mask
+  -weights are obtained from Beta(MAF,1,25)
+  -list of gene-based tests run: ACATO,ACATV,SKAT,SKATO,SKATO-ACAT
+ * approximate memory usage : 61MB
+ * using minimum MAC of 1 (masks with lower MAC are ignored)
+ERROR: cannot write file : results/regenie/b1_struct_nopc_STR100_46.regenie.gz
+[11:32:44] b2_struct_pc  starting
+[11:32:48] b2_struct_pc  exit 1, 4s
+   +number of annotations categories = 4
+ * masks            : [config/regenie_masks.def] n_masks = 3
+ * aaf cutoffs      : [ 4 : 0.001 0.005 0.01 1 ] + singletons
+ * set file         : [config/regenie_setlist.tsv] n_sets = 56
+ * # threads        : [7]
+ * # tested sets    : [56]
+ * max block size   : [200]
+ * rule used to build masks : max
+ * computing gene-based tests for each set of variants included in a mask (rho=[0,0.01,0.04,0.09,0.16,0.25,0.5,1])
+  -variants with MAC <= 10 are collapsed into a mask
+  -weights are obtained from Beta(MAF,1,25)
+  -list of gene-based tests run: ACATO,ACATV,SKAT,SKATO,SKATO-ACAT
+ * approximate memory usage : 62MB
+ * using minimum MAC of 1 (masks with lower MAC are ignored)
+ERROR: cannot write file : results/regenie/b2_struct_pc_STR100_46.regenie.gz
+
+=============== inventory ===============
+  a1_qt                  200 result files
+  a2_bt10_nofirth        200 result files
+  a3_bt01_nofirth        200 result files
+  a4_bt10_firth          200 result files
+  a5_bt01_firth          200 result files
+  b1_struct_nopc         245 result files
+  b2_struct_pc           245 result files
+
+DONE. Next: python3 scripts/10b_analyze.py
